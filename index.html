@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Occult</title>
-    <meta name="description" content="Elevate your brand with Occult's enchanted marketing strategies. Experience deep space strategies in a world of hidden knowledge and meticulous craftsmanship.">
+    <title>Elevate Marketing</title>
+    <meta name="description" content="Elevate your brand with cutting-edge digital marketing strategies. AI-powered solutions that deliver measurable results and stay ahead of the curve.">
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="aether-bg" id="aether-bg"></div>
+    <div id="fluid-bg"></div>
 
     <header>
         <nav>
@@ -21,22 +22,59 @@
                     <span></span>
                 </button>
                 <ul>
-                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="index.html" class="active" >Home</a></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="approach.html">Our Approach</a></li>
-                    <li><a href="about.html">About</a></li>
+                    <li><a href="about.html" >About</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
         </nav>
     </header>
 
-    <section id="hero">
+    <section id="hero-section">
         <div class="container">
             <div class="hero-content reveal">
-            <h1 id="headline">Elevate Your Brand with<br> Elite Digital Strategy & Creative Execution</h1>
-                <canvas id="hero-visual" width="300" height="300"></canvas>
-                <a href="services.html" class="cta-link">Discover Our Services</a>
+            <h1 id="headline">
+                <span>Elevate Your Brand</span>
+                <span class="with-text">with</span>
+                <span>Elite Digital Strategy & Creative Execution</span>
+            </h1>
+                <p>We transform market potential into measurable dominance through strategic innovation.</p>
+                <!--canvas id="hero-visual" width="300" height="300"></canvas-->
+                <a href="contact.html" class="cta-link">Schedule Discovery Call</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="ai-advantage" class="reveal">
+        <div class="container">
+            <h2>Core Offerings</h2>
+            <div class="ai-features">
+                <div class="feature">
+                    <h3>Future-Proof Strategy</h3>
+                    <p>Build adaptable frameworks that evolve with market dynamics for long-term success.</p>
+                </div>
+                <div class="feature">
+                    <h3>Optimized Campaigns</h3>
+                    <p>Drive targeted growth through data-driven campaigns that maximize ROI instantly.</p>
+                </div>
+                <div class="feature">
+                    <h3>Visionary Branding</h3>
+                    <p>Craft compelling identities that resonate deeply and differentiate your brand uniquely.</p>
+                </div>
+                <div class="feature">
+                    <h3>Premium Content</h3>
+                    <p>Produce engaging narratives that captivate audiences and amplify your message powerfully.</p>
+                </div>
+                <div class="feature">
+                    <h3>Scalable Platforms</h3>
+                    <p>Develop robust digital ecosystems that grow seamlessly with your business demands.</p>
+                </div>
+                <div class="feature">
+                    <h3>Data Intelligence</h3>
+                    <p>Uncover actionable insights through advanced analytics to fuel strategic decisions.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -47,8 +85,135 @@
         </div>
     </section>
 
-    <footer>
-        <div class="container">
+    <footer class="footer-hero">
+        <style>
+            .footer-hero {
+                position: relative;
+                width: 100%;
+                height: 300px;
+                background: #06010F;
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-top: 50px;
+            }
+
+            .light-ray-container {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                filter: blur(100px);
+            }
+
+            .light-ray {
+                position: absolute;
+                width: 250px;
+                height: 500px;
+                border-radius: 50%;
+                animation: godRays 8s ease-in-out infinite alternate;
+            }
+
+            .light-ray:nth-child(1) {
+                top: -50%;
+                left: 10%;
+                background: radial-gradient(circle, rgba(0, 255, 255, 0.6) 0%, rgba(0, 255, 255, 0.4) 50%, transparent 70%);
+            }
+
+            .light-ray:nth-child(2) {
+                top: -50%;
+                left: 40%;
+                background: radial-gradient(circle, rgba(0, 255, 255, 0.6) 0%, rgba(0, 255, 255, 0.4) 50%, transparent 70%);
+                animation-delay: 2s;
+            }
+
+            .light-ray:nth-child(3) {
+                top: -50%;
+                left: 70%;
+                background: radial-gradient(circle, rgba(0, 255, 255, 0.6) 0%, rgba(0, 255, 255, 0.4) 50%, transparent 70%);
+                animation-delay: 4s;
+            }
+
+            @keyframes godRays {
+                0% { opacity: 0.7; transform: scaleY(0.8) rotate(-10deg); }
+                100% { opacity: 1; transform: scaleY(1.2) rotate(10deg); }
+            }
+
+            .footer-hero::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0);
+                background-size: 20px 20px;
+                pointer-events: none;
+            }
+
+            .footer-content {
+                position: relative;
+                z-index: 2;
+                text-align: center;
+                color: white;
+            }
+
+            .footer-content p:first-child {
+                font-size: 18px;
+                margin-bottom: 10px;
+                color: #cccccc;
+            }
+
+            .footer-content .footer-logo {
+                max-width: 200px;
+                height: auto;
+                margin-bottom: 20px;
+            }
+
+            .social-icons {
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+                margin-bottom: 20px;
+            }
+
+            .social-icons a {
+                width: 40px;
+                height: 40px;
+                background: rgba(255, 255, 255, 0.1);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                transition: background 0.3s;
+                text-decoration: none;
+            }
+
+            .social-icons a:hover {
+                background: rgba(255, 255, 255, 0.2);
+            }
+
+            .social-icons svg {
+                width: 20px;
+                height: 20px;
+                fill: white;
+            }
+
+            .footer-content p:last-child {
+                font-size: 14px;
+                color: #aaaaaa;
+            }
+        </style>
+        <div class="light-ray-container">
+            <div class="light-ray"></div>
+            <div class="light-ray"></div>
+            <div class="light-ray"></div>
+        </div>
+        <div class="footer-content">
+            <p>Get in Touch</p>
             <img src="images/logo.png" alt="Occult" class="footer-logo">
             <div class="social-icons">
                 <a href="https://www.linkedin.com/company/theoccult" target="_blank" rel="noopener noreferrer">
@@ -67,7 +232,7 @@
                     </svg>
                 </a>
             </div>
-            <p>&copy; 2025 Occult</p>
+            <p>© 2025 Elevate Marketing</p>
         </div>
     </footer>
 

@@ -8,6 +8,12 @@ document.addEventListener('DOMContentLoaded', function() {
         initHeroCanvas();
     }
 
+    // Fluid background animation for hero section
+    if (document.getElementById('fluid-bg')) {
+        console.log('Initializing fluid background animation');
+        initFluidBg();
+    }
+
     // Mobile menu
     initMobileMenu();
 
@@ -76,6 +82,136 @@ function initHeroCanvas() {
     }
 
     draw();
+}
+
+// Fluid blob background animation
+function initFluidBg() {
+    const fluidBg = document.getElementById('fluid-bg');
+    if (!fluidBg) return;
+
+    // Create canvas element
+    const canvas = document.createElement('canvas');
+    canvas.style.width = '100%';
+    canvas.style.height = '100%';
+    canvas.style.position = 'absolute';
+    canvas.style.top = '0';
+    canvas.style.left = '0';
+    // No border for clean look
+    fluidBg.appendChild(canvas);
+    console.log('Canvas created and appended to fluid-bg');
+
+    const ctx = canvas.getContext('2d');
+
+    // Set canvas size
+    function resizeCanvas() {
+        canvas.width = fluidBg.offsetWidth;
+        canvas.height = fluidBg.offsetHeight;
+    }
+
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    // Blob class
+    class Blob {
+        constructor(x, y, radius, color) {
+            this.x = x;
+            this.y = y;
+            this.radius = radius;
+            this.color = color;
+            this.angle = Math.random() * Math.PI * 2;
+            this.speed = 0.01 + Math.random() * 0.02;
+            this.amplitude = 50 + Math.random() * 100;
+            this.offsetX = Math.random() * canvas.width;
+            this.offsetY = Math.random() * canvas.height;
+        }
+
+        update() {
+            this.angle += this.speed;
+            this.x = this.offsetX + Math.sin(this.angle) * this.amplitude;
+            this.y = this.offsetY + Math.cos(this.angle) * this.amplitude;
+
+            // Keep blobs within bounds
+            if (this.x < -this.radius) this.x = canvas.width + this.radius;
+            if (this.x > canvas.width + this.radius) this.x = -this.radius;
+            if (this.y < -this.radius) this.y = canvas.height + this.radius;
+            if (this.y > canvas.height + this.radius) this.y = -this.radius;
+        }
+
+        draw() {
+            ctx.save();
+
+            // Create radial gradient for each blob to make it more mystical
+            const gradient = ctx.createRadialGradient(
+                this.x, this.y, 0,
+                this.x, this.y, this.radius
+            );
+            gradient.addColorStop(0, this.color);
+            gradient.addColorStop(0.7, this.color + '80'); // Semi-transparent
+            gradient.addColorStop(1, this.color + '00'); // Fully transparent
+
+            // Add blur filter for mystical effect
+            ctx.filter = 'blur(3px)';
+
+            // Draw the main blob with gradient
+            ctx.globalAlpha = 0.4;
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Enhanced glow effect
+            ctx.shadowColor = this.color;
+            ctx.shadowBlur = 50;
+            ctx.globalAlpha = 0.8;
+            ctx.fill();
+
+            // Add outer glow ring
+            ctx.filter = 'blur(8px)';
+            ctx.globalAlpha = 0.2;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius * 1.5, 0, Math.PI * 2);
+            ctx.fill();
+
+            ctx.restore();
+        }
+    }
+
+    // Create blobs
+    const blobs = [];
+    const colors = ['#4a0e4e', '#16213e', '#0f3460', '#1a1a2e', '#533483'];
+
+    for (let i = 0; i < 2; i++) {
+        const x = Math.random() * canvas.width;
+        const y = Math.random() * canvas.height;
+        const radius = 80 + Math.random() * 120;
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        blobs.push(new Blob(x, y, radius, color));
+    }
+
+    // Animation loop
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Draw gradient background
+        const gradient = ctx.createRadialGradient(
+            canvas.width / 2, canvas.height / 2, 0,
+            canvas.width / 2, canvas.height / 2, Math.max(canvas.width, canvas.height) / 2
+        );
+        gradient.addColorStop(0, 'rgba(10, 10, 10, 0.1)');
+        gradient.addColorStop(1, 'rgba(26, 26, 46, 0.3)');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Update and draw blobs
+        blobs.forEach(blob => {
+            blob.update();
+            blob.draw();
+        });
+
+        requestAnimationFrame(animate);
+    }
+
+    animate();
 }
 
 // Mobile menu toggle
