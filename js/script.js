@@ -1,18 +1,15 @@
 // Initialize page functions
 document.addEventListener('DOMContentLoaded', function() {
-    // Aether background particles
-    initAether();
+    // Hero canvas animation for index - DISABLED for performance
+    // if (document.getElementById('hero-visual')) {
+    //     initHeroCanvas();
+    // }
 
-    // Hero canvas animation for index
-    if (document.getElementById('hero-visual')) {
-        initHeroCanvas();
-    }
-
-    // Fluid background animation for hero section
-    if (document.getElementById('fluid-bg')) {
-        console.log('Initializing fluid background animation');
-        initFluidBg();
-    }
+    // Fluid background animation for hero section - DISABLED for performance
+    // if (document.getElementById('fluid-bg')) {
+    //     console.log('Initializing fluid background animation');
+    //     initFluidBg();
+    // }
 
     // Mobile menu
     initMobileMenu();
@@ -24,27 +21,25 @@ document.addEventListener('DOMContentLoaded', function() {
     initFormValidation();
 });
 
-// Aether particle background
-function initAether() {
-    const aetherBg = document.getElementById('aether-bg');
-    if (!aetherBg) return;
 
-    for (let i = 0; i < 50; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        particle.style.left = Math.random() * 100 + '%';
-        particle.style.animationDuration = Math.random() * 10 + 15 + 's';
-        particle.style.animationDelay = Math.random() * 15 + 's';
-        aetherBg.appendChild(particle);
-    }
-}
 
-// Hero canvas pulsating shape
+// Hero canvas pulsating shape - throttled to 30fps
 function initHeroCanvas() {
     const canvas = document.getElementById('hero-visual');
-    const ctx = canvas.getContext('2d');
+    if (!canvas) return;
 
-    function draw() {
+    const ctx = canvas.getContext('2d');
+    let lastTime = 0;
+    const targetFPS = 30;
+    const frameInterval = 1000 / targetFPS;
+
+    function draw(currentTime) {
+        if (currentTime - lastTime < frameInterval) {
+            requestAnimationFrame(draw);
+            return;
+        }
+        lastTime = currentTime;
+
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.save();
 
@@ -52,7 +47,7 @@ function initHeroCanvas() {
         ctx.translate(canvas.width / 2, canvas.height / 2);
 
         // Pulsating tetrahedron-like shape
-        const time = Date.now() * 0.002;
+        const time = Date.now() * 0.001;
         const scale = 0.8 + Math.sin(time) * 0.2;
 
         // Draw sigil-like shape
@@ -81,7 +76,7 @@ function initHeroCanvas() {
         requestAnimationFrame(draw);
     }
 
-    draw();
+    requestAnimationFrame(draw);
 }
 
 // Fluid blob background animation
@@ -119,7 +114,7 @@ function initFluidBg() {
             this.radius = radius;
             this.color = color;
             this.angle = Math.random() * Math.PI * 2;
-            this.speed = 0.01 + Math.random() * 0.02;
+            this.speed = 0.005 + Math.random() * 0.01;
             this.amplitude = 50 + Math.random() * 100;
             this.offsetX = Math.random() * canvas.width;
             this.offsetY = Math.random() * canvas.height;
@@ -140,37 +135,47 @@ function initFluidBg() {
         draw() {
             ctx.save();
 
-            // Create radial gradient for each blob to make it more mystical
-            const gradient = ctx.createRadialGradient(
-                this.x, this.y, 0,
-                this.x, this.y, this.radius
-            );
-            gradient.addColorStop(0, this.color);
-            gradient.addColorStop(0.7, this.color + '80'); // Semi-transparent
-            gradient.addColorStop(1, this.color + '00'); // Fully transparent
+            // Use the cyan color from footer
+            const pathColor = '#00FFFF';
 
             // Add blur filter for mystical effect
-            ctx.filter = 'blur(3px)';
+            ctx.filter = 'blur(20px)';
 
-            // Draw the main blob with gradient
-            ctx.globalAlpha = 0.4;
-            ctx.fillStyle = gradient;
+            // Draw the main blob - curvy path
+            ctx.globalAlpha = 0.05;
             ctx.beginPath();
-            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-            ctx.fill();
+            if (this === blobs[0]) {
+                // First blob: left bottom to right top
+                ctx.moveTo(0, canvas.height);
+                ctx.quadraticCurveTo(canvas.width / 2, this.y, canvas.width, 0);
+            } else {
+                // Second blob: right bottom to left top
+                ctx.moveTo(canvas.width, canvas.height);
+                ctx.quadraticCurveTo(canvas.width / 2, canvas.height - this.y, 0, 0);
+            }
+            ctx.lineWidth = this.radius * 1.5;
+            ctx.strokeStyle = pathColor;
+            ctx.stroke();
 
             // Enhanced glow effect
-            ctx.shadowColor = this.color;
-            ctx.shadowBlur = 50;
-            ctx.globalAlpha = 0.8;
-            ctx.fill();
+            ctx.shadowColor = pathColor;
+            ctx.shadowBlur = 30;
+            ctx.globalAlpha = 0.1;
+            ctx.stroke();
 
-            // Add outer glow ring
-            ctx.filter = 'blur(8px)';
-            ctx.globalAlpha = 0.2;
+            // Add outer glow ring - thicker curve
+            ctx.filter = 'blur(25px)';
+            ctx.globalAlpha = 0.02;
             ctx.beginPath();
-            ctx.arc(this.x, this.y, this.radius * 1.5, 0, Math.PI * 2);
-            ctx.fill();
+            if (this === blobs[0]) {
+                ctx.moveTo(0, canvas.height);
+                ctx.quadraticCurveTo(canvas.width / 2, this.y, canvas.width, 0);
+            } else {
+                ctx.moveTo(canvas.width, canvas.height);
+                ctx.quadraticCurveTo(canvas.width / 2, canvas.height - this.y, 0, 0);
+            }
+            ctx.lineWidth = this.radius * 3.0;
+            ctx.stroke();
 
             ctx.restore();
         }
@@ -188,8 +193,18 @@ function initFluidBg() {
         blobs.push(new Blob(x, y, radius, color));
     }
 
-    // Animation loop
-    function animate() {
+    // Animation loop - throttled to 24fps for better performance
+    let lastTime = 0;
+    const targetFPS = 24;
+    const frameInterval = 1000 / targetFPS;
+
+    function animate(currentTime) {
+        if (currentTime - lastTime < frameInterval) {
+            requestAnimationFrame(animate);
+            return;
+        }
+        lastTime = currentTime;
+
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         // Draw gradient background
@@ -211,7 +226,7 @@ function initFluidBg() {
         requestAnimationFrame(animate);
     }
 
-    animate();
+    requestAnimationFrame(animate);
 }
 
 // Mobile menu toggle

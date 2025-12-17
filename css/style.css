@@ -36,7 +36,7 @@ h1, h2, h3 {
   margin-bottom: 20px;
   color: var(--gold);
   text-align: center;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
 }
 
 h1 {
@@ -61,9 +61,8 @@ header {
   top: 0;
   width: 100%;
   z-index: 1000;
-  background: linear-gradient(135deg, rgba(10, 10, 10, 0.98), rgba(20, 20, 20, 0.98));
-  backdrop-filter: blur(25px) saturate(1.2);
-  box-shadow: 0 2px 30px rgba(0, 0, 0, 0.8), 0 0 15px rgba(255, 255, 255, 0.3);
+  background: rgba(10, 10, 10, 0.95);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
 }
 
 nav .container {
@@ -100,7 +99,7 @@ nav ul li a {
   letter-spacing: 1px;
   text-transform: uppercase;
   font-size: 0.85rem;
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.4);
 }
 
 nav ul li a::after {
@@ -156,7 +155,7 @@ nav ul li a.active {
   transform: rotate(-45deg) translate(7px, -6px);
 }
 
-/* Aether Background Animation - Subtle particle effect on all pages */
+/* Aether Background - Subtle grid mesh effect on all pages */
 .aether-bg {
   position: fixed;
   top: 0;
@@ -168,26 +167,27 @@ nav ul li a.active {
   background: var(--primary-bg);
 }
 
-.aether-bg .particle {
-  position: absolute;
-  width: 2px;
-  height: 2px;
-  background: var(--amethyst);
-  opacity: 0.6;
-  border-radius: 50%;
-  animation: float 20s linear infinite;
-}
 
-@keyframes float {
-  0% { transform: translateY(100vh) rotate(0deg); }
-  100% { transform: translateY(-100vh) rotate(360deg); }
+
+.aether-bg::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 50px 50px, 50px 50px;
+  opacity: 0.6;
 }
 
 /* Scroll Reveal Animation */
 .reveal {
   opacity: 0;
-  transform: translateY(50px);
-  transition: all 0.6s ease-out;
+  transform: translateY(30px);
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
 }
 
 .reveal.revealed {
@@ -266,8 +266,8 @@ section {
 }
 
 .logo-row img:hover {
-  transform: scale(1.4);
-  filter: brightness(1.2);
+  transform: scale(1.1);
+  filter: brightness(1.1);
 }
 
 /* CTA Styles */
@@ -275,7 +275,6 @@ section {
   text-decoration: underline;
   color: white;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-  animation: pulse-glow 4s ease-in-out infinite;
   transition: color 0.3s ease, text-shadow 0.3s ease;
   font-weight: 600;
   font-size: 1.4rem;
@@ -286,15 +285,6 @@ section {
 .cta-link:hover {
   color: #ADD8E6;
   text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px #ADD8E6;
-}
-
-@keyframes pulse-glow {
-  0%, 100% {
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-  }
-  50% {
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
-  }
 }
 
 /* Index Hero Styles */
@@ -374,9 +364,10 @@ section {
   border-radius: 15px;
   padding: 20px 15px;
   text-align: center;
-  transition: all 0.3s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   position: relative;
   overflow: hidden;
+  will-change: transform;
 }
 
 .offering-card::before {
@@ -387,13 +378,13 @@ section {
   width: 200%;
   height: 200%;
   background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><g fill="none" stroke="rgba(255, 255, 255, 0.1)" stroke-width="0.5"><circle cx="50" cy="50" r="25"/><polygon points="50,25 75,50 50,75 25,50"/></g></svg>');
-  animation: rotate 20s linear infinite;
   opacity: 0.3;
+  /* Removed animation for performance */
 }
 
 .offering-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 0 30px rgba(255, 255, 255, 0.5), inset 0 0 30px rgba(255, 255, 255, 0.1);
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
   border-color: var(--gold);
 }
 
@@ -432,7 +423,7 @@ section {
   border-radius: 15px;
   padding: 20px 15px;
   text-align: center;
-  transition: all 0.3s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   position: relative;
   overflow: hidden;
   min-height: 100px;
@@ -440,6 +431,7 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
+  will-change: transform;
 }
 
 .value-card::before {
@@ -450,13 +442,12 @@ section {
   width: 200%;
   height: 200%;
   background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><g fill="none" stroke="rgba(255, 255, 255, 0.1)" stroke-width="0.5"><circle cx="50" cy="50" r="25"/><polygon points="50,25 75,50 50,75 25,50"/></g></svg>');
-  animation: rotate 20s linear infinite;
   opacity: 0.3;
 }
 
 .value-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 0 30px rgba(255, 255, 255, 0.5), inset 0 0 30px rgba(255, 255, 255, 0.1);
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
   border-color: var(--gold);
 }
 
@@ -475,7 +466,6 @@ section {
   color: white;
   text-decoration: underline;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-  animation: pulse-glow 4s ease-in-out infinite;
   transition: color 0.3s ease, text-shadow 0.3s ease;
   background: none;
   border: none;
@@ -655,10 +645,11 @@ section {
   padding: 15px;
 max-width: 700px;
   text-align: center;
-  transition: all 0.3s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   position: relative;
   overflow: hidden;
   display: inline-block;
+  will-change: transform;
 }
 
 .step-card::before {
@@ -669,13 +660,12 @@ max-width: 700px;
   width: 200%;
   height: 200%;
   background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><g fill="none" stroke="rgba(255, 255, 255, 0.1)" stroke-width="0.5"><circle cx="50" cy="50" r="25"/><polygon points="50,25 75,50 50,75 25,50"/></g></svg>');
-  animation: rotate 20s linear infinite;
   opacity: 0.3;
 }
 
 .step-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 30px rgba(255, 255, 255, 0.5), inset 0 0 30px rgba(255, 255, 255, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
   border-color: var(--gold);
 }
 
@@ -762,7 +752,7 @@ footer .container {
   filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
 }
 
-/* Card background rotation animation */
+/* Card background rotation animation - disabled for performance */
 @keyframes rotate {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
@@ -804,9 +794,10 @@ footer .container {
   border-radius: 15px;
   padding: 20px;
   text-align: center;
-  transition: all 0.3s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   position: relative;
   overflow: hidden;
+  will-change: transform;
 }
 
 .feature::before {
@@ -817,13 +808,12 @@ footer .container {
   width: 200%;
   height: 200%;
   background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><g fill="none" stroke="rgba(255, 255, 255, 0.1)" stroke-width="0.5"><circle cx="50" cy="50" r="25"/><polygon points="50,25 75,50 50,75 25,50"/></g></svg>');
-  animation: rotate 20s linear infinite;
   opacity: 0.3;
 }
 
 .feature:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
   border-color: var(--gold);
 }
 
@@ -846,12 +836,13 @@ footer .container {
   border-radius: 15px;
   padding: 20px;
   text-align: center;
-  transition: all 0.3s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  will-change: transform;
 }
 
 .team-member:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
   border-color: var(--gold);
 }
 
