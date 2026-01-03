@@ -3,10 +3,9 @@
 /* CSS Variables for Theme */
 :root {
   --primary-bg: #0a0a0a;
-  --text-color: #f5f5f5;
-  --gold: #ffffff;
-  --silver: #C0C0C0;
-  --amethyst: #ffffff;
+  --text-color: #FFF9F3;
+  --gold: #FFF9F3;
+  --silver: #FFF9F3;
   --serif-font: 'Geist Sans', sans-serif;
   --sans-font: 'Geist Sans', sans-serif;
 }
@@ -36,7 +35,6 @@ h1, h2, h3 {
   margin-bottom: 20px;
   color: var(--gold);
   text-align: center;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
 }
 
 h1 {
@@ -75,7 +73,6 @@ nav .container {
 .logo {
   height: 40px;
   width: auto;
-  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
 }
 
 nav ul {
@@ -99,7 +96,6 @@ nav ul li a {
   letter-spacing: 1px;
   text-transform: uppercase;
   font-size: 0.85rem;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.4);
 }
 
 nav ul li a::after {
@@ -122,7 +118,6 @@ nav ul li a.active::after {
 nav ul li a:hover,
 nav ul li a.active {
   color: var(--gold);
-  text-shadow: 0 0 20px var(--gold), 0 0 40px var(--gold);
   transform: translateY(-3px);
 }
 
@@ -273,9 +268,8 @@ section {
 /* CTA Styles */
 .cta-link {
   text-decoration: underline;
-  color: white;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-  transition: color 0.3s ease, text-shadow 0.3s ease;
+  color: var(--text-color);
+  transition: color 0.3s ease;
   font-weight: 600;
   font-size: 1.4rem;
   text-align: center;
@@ -284,7 +278,6 @@ section {
 
 .cta-link:hover {
   color: #ADD8E6;
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px #ADD8E6;
 }
 
 /* Index Hero Styles */
@@ -316,7 +309,7 @@ section {
   align-items: center;
   min-height: 180px;
   font-size: 2.4rem;
-  background: linear-gradient(45deg, #ffffff, #f0f0f0, #e0e0e0);
+  background: linear-gradient(45deg, #FFF9F3, #FFF9F3, #FFF9F3);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -463,10 +456,9 @@ section {
 
 /* Submit Button Styling */
 .mystical-button .text {
-  color: white;
+  color: var(--text-color);
   text-decoration: underline;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-  transition: color 0.3s ease, text-shadow 0.3s ease;
+  transition: color 0.3s ease;
   background: none;
   border: none;
   font-weight: 600;
@@ -475,7 +467,6 @@ section {
 
 .mystical-button:hover .text {
   color: #ADD8E6;
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px #ADD8E6;
 }
 
 /* Contact Section */
@@ -600,7 +591,6 @@ section {
   background: var(--gold);
   transform: translateX(-50%);
   border-radius: 2px;
-  box-shadow: 0 0 8px var(--gold), 0 0 16px var(--gold);
 }
 
 .timeline-item {
@@ -619,7 +609,6 @@ section {
   background: var(--gold);
   transform: rotate(45deg);
   z-index: 1;
-  box-shadow: 0 0 8px var(--gold), 0 0 16px var(--gold);
 }
 
 .timeline-item.left {
@@ -728,7 +717,6 @@ footer .container {
   height: 50px;
   width: auto;
   margin-bottom: 20px;
-  filter: drop-shadow(0 0 10px var(--text-color));
 }
 
 .social-icons {
@@ -749,7 +737,6 @@ footer .container {
   width: 30px;
   height: 30px;
   fill: white;
-  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
 }
 
 /* Card background rotation animation - disabled for performance */
