@@ -36,40 +36,76 @@
         <div class="container">
             <h2>Core Offerings</h2>
             <div class="offerings-grid">
-                <div class="offering-card">
+                <div class="offering-card" data-service="branding">
                     <div class="card-content">
-                        <h3>Future-Proof Strategy</h3>
+                        <h3>Branding</h3>
                         <p>Build adaptable frameworks that evolve with market dynamics for long-term success.</p>
                     </div>
                 </div>
-                <div class="offering-card">
+                <div class="offering-card" data-service="consulting">
                     <div class="card-content">
-                        <h3>Optimized Campaigns</h3>
+                        <h3>Consulting</h3>
                         <p>Drive targeted growth through data-driven campaigns that maximize ROI instantly.</p>
                     </div>
                 </div>
-                <div class="offering-card">
+                <div class="offering-card" data-service="lead-generation">
                     <div class="card-content">
-                        <h3>Visionary Branding</h3>
+                        <h3>Lead Generation</h3>
                         <p>Craft compelling identities that resonate deeply and differentiate your brand uniquely.</p>
                     </div>
                 </div>
-                <div class="offering-card">
+                <div class="offering-card" data-service="marketing-strategies">
                     <div class="card-content">
-                        <h3>Premium Content</h3>
+                        <h3>Marketing Strategies</h3>
                         <p>Produce engaging narratives that captivate audiences and amplify your message powerfully.</p>
                     </div>
                 </div>
-                <div class="offering-card">
+                <div class="offering-card" data-service="paid-ads">
                     <div class="card-content">
-                        <h3>Scalable Platforms</h3>
+                        <h3>Paid Ads</h3>
                         <p>Develop robust digital ecosystems that grow seamlessly with your business demands.</p>
                     </div>
                 </div>
-                <div class="offering-card">
+                <div class="offering-card" data-service="content-creation">
                     <div class="card-content">
-                        <h3>Data Intelligence</h3>
+                        <h3>Content Creation</h3>
                         <p>Uncover actionable insights through advanced analytics to fuel strategic decisions.</p>
+                    </div>
+                </div>
+                <div class="offering-card" data-service="influencer-marketing">
+                    <div class="card-content">
+                        <h3>Influencer Marketing</h3>
+                        <p>Leverage influential voices to amplify your brand message and reach new audiences.</p>
+                    </div>
+                </div>
+                <div class="offering-card" data-service="social-media">
+                    <div class="card-content">
+                        <h3>Social Media</h3>
+                        <p>Build and manage your social presence across all platforms for maximum engagement.</p>
+                    </div>
+                </div>
+                <div class="offering-card" data-service="production">
+                    <div class="card-content">
+                        <h3>Production</h3>
+                        <p>Video shoots, Video ads, Script writing - Bring your vision to life with professional production services.</p>
+                    </div>
+                </div>
+                <div class="offering-card" data-service="website-design">
+                    <div class="card-content">
+                        <h3>Website Design and Development</h3>
+                        <p>SEO Content etc - Create stunning, optimized websites that drive results.</p>
+                    </div>
+                </div>
+                <div class="offering-card" data-service="meme-marketing">
+                    <div class="card-content">
+                        <h3>Meme Marketing</h3>
+                        <p>Harness the power of viral memes to engage audiences and boost brand awareness.</p>
+                    </div>
+                </div>
+                <div class="offering-card" data-service="content-writing">
+                    <div class="card-content">
+                        <h3>Content Writing</h3>
+                        <p>Craft compelling copy that tells your story and converts visitors into customers.</p>
                     </div>
                 </div>
             </div>
@@ -232,6 +268,152 @@
             <p>© 2025 Elevate Marketing</p>
         </div>
     </footer>
+
+    <!-- Modal Overlay -->
+    <div id="modal-overlay" class="modal-overlay">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div id="modal-body">
+                <!-- Modal content will be dynamically loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Content Templates -->
+    <div id="modal-templates" style="display: none;">
+        <div data-modal="branding">
+            <h2>Branding</h2>
+            <p>Our branding services help establish a strong, memorable identity for your business. We create comprehensive brand strategies that include logo design, color palettes, typography, and brand voice guidelines. Our approach ensures your brand resonates with your target audience and stands out in a crowded marketplace.</p>
+            <ul>
+                <li>Logo Design & Development</li>
+                <li>Brand Identity Guidelines</li>
+                <li>Color Palette & Typography Selection</li>
+                <li>Brand Voice & Messaging</li>
+                <li>Brand Strategy Consulting</li>
+            </ul>
+        </div>
+        <div data-modal="consulting">
+            <h2>Consulting</h2>
+            <p>Our marketing consulting services provide expert guidance to optimize your business strategies. We analyze your current marketing efforts, identify opportunities for improvement, and develop actionable plans to drive growth and maximize ROI.</p>
+            <ul>
+                <li>Marketing Audit & Analysis</li>
+                <li>Strategy Development</li>
+                <li>Performance Optimization</li>
+                <li>Competitive Analysis</li>
+                <li>ROI Maximization</li>
+            </ul>
+        </div>
+        <div data-modal="lead-generation">
+            <h2>Lead Generation</h2>
+            <p>Transform your website visitors into qualified leads with our comprehensive lead generation services. We implement proven strategies across multiple channels to attract, capture, and nurture potential customers throughout their buying journey.</p>
+            <ul>
+                <li>Lead Magnet Creation</li>
+                <li>Landing Page Optimization</li>
+                <li>Email Marketing Campaigns</li>
+                <li>Social Media Lead Ads</li>
+                <li>Lead Scoring & Qualification</li>
+            </ul>
+        </div>
+        <div data-modal="marketing-strategies">
+            <h2>Marketing Strategies</h2>
+            <p>Develop winning marketing strategies tailored to your business goals. Our strategic approach combines market research, competitor analysis, and innovative tactics to create comprehensive plans that drive measurable results.</p>
+            <ul>
+                <li>Market Research & Analysis</li>
+                <li>Competitor Intelligence</li>
+                <li>Target Audience Profiling</li>
+                <li>Channel Strategy Development</li>
+                <li>Campaign Planning & Execution</li>
+            </ul>
+        </div>
+        <div data-modal="paid-ads">
+            <h2>Paid Ads</h2>
+            <p>Maximize your advertising ROI with expertly managed paid ad campaigns. We handle everything from campaign setup and optimization to performance monitoring and A/B testing across Google Ads, Facebook Ads, and other platforms.</p>
+            <ul>
+                <li>Google Ads Management</li>
+                <li>Social Media Advertising</li>
+                <li>Display & Video Advertising</li>
+                <li>Retargeting Campaigns</li>
+                <li>Performance Analytics & Reporting</li>
+            </ul>
+        </div>
+        <div data-modal="content-creation">
+            <h2>Content Creation</h2>
+            <p>Engage your audience with high-quality, compelling content that drives action. Our content creation services cover everything from blog posts and social media content to video production and infographics.</p>
+            <ul>
+                <li>Blog Writing & Ghostwriting</li>
+                <li>Social Media Content</li>
+                <li>Video Script Writing</li>
+                <li>Infographic Design</li>
+                <li>Email Newsletter Creation</li>
+            </ul>
+        </div>
+        <div data-modal="influencer-marketing">
+            <h2>Influencer Marketing</h2>
+            <p>Leverage the power of social media influencers to amplify your brand message and reach new audiences. We identify the right influencers, manage partnerships, and track campaign performance for maximum impact.</p>
+            <ul>
+                <li>Influencer Identification & Outreach</li>
+                <li>Campaign Strategy Development</li>
+                <li>Partnership Management</li>
+                <li>Content Collaboration</li>
+                <li>Performance Tracking & Reporting</li>
+            </ul>
+        </div>
+        <div data-modal="social-media">
+            <h2>Social Media</h2>
+            <p>Build and manage a strong social media presence that engages your audience and drives business growth. Our comprehensive social media services include strategy, content creation, community management, and analytics.</p>
+            <ul>
+                <li>Social Media Strategy</li>
+                <li>Content Calendar Planning</li>
+                <li>Community Management</li>
+                <li>Social Media Advertising</li>
+                <li>Analytics & Reporting</li>
+            </ul>
+        </div>
+        <div data-modal="production">
+            <h2>Production</h2>
+            <p>Bring your vision to life with our professional video production services. From concept development to final editing, we handle video shoots, video ads, and script writing to create compelling visual content.</p>
+            <ul>
+                <li>Video Production Planning</li>
+                <li>Professional Video Shoots</li>
+                <li>Video Ad Creation</li>
+                <li>Script Writing & Storyboarding</li>
+                <li>Post-Production Editing</li>
+            </ul>
+        </div>
+        <div data-modal="website-design">
+            <h2>Website Design and Development</h2>
+            <p>Create stunning, high-converting websites that drive results. Our web design and development services include responsive design, SEO optimization, content creation, and ongoing maintenance.</p>
+            <ul>
+                <li>Custom Website Design</li>
+                <li>Responsive Development</li>
+                <li>SEO Content Creation</li>
+                <li>E-commerce Integration</li>
+                <li>Website Maintenance & Updates</li>
+            </ul>
+        </div>
+        <div data-modal="meme-marketing">
+            <h2>Meme Marketing</h2>
+            <p>Harness the viral power of memes to engage audiences and boost brand awareness. Our meme marketing services create shareable, relatable content that resonates with your target demographic.</p>
+            <ul>
+                <li>Meme Strategy Development</li>
+                <li>Custom Meme Creation</li>
+                <li>Viral Content Campaigns</li>
+                <li>Social Media Distribution</li>
+                <li>Engagement Analytics</li>
+            </ul>
+        </div>
+        <div data-modal="content-writing">
+            <h2>Content Writing</h2>
+            <p>Craft compelling copy that tells your story and converts visitors into customers. Our content writing services span website copy, blog posts, email campaigns, and more.</p>
+            <ul>
+                <li>Website Copywriting</li>
+                <li>Blog Post Writing</li>
+                <li>Email Marketing Copy</li>
+                <li>Product Descriptions</li>
+                <li>SEO-Optimized Content</li>
+            </ul>
+        </div>
+    </div>
 
     <script src="js/script.js"></script>
 </body>

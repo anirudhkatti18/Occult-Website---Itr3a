@@ -19,6 +19,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Form validation
     initFormValidation();
+
+    // Modal functionality
+    initModals();
 });
 
 
@@ -290,4 +293,54 @@ function initFormValidation() {
             return;
         }
     });
+}
+
+// Modal functionality
+function initModals() {
+    const modalOverlay = document.getElementById('modal-overlay');
+    const modalClose = document.querySelector('.modal-close');
+    const modalBody = document.getElementById('modal-body');
+    const modalTemplates = document.getElementById('modal-templates');
+
+    if (!modalOverlay || !modalClose || !modalBody || !modalTemplates) return;
+
+    // Add click event listeners to service cards
+    document.querySelectorAll('.offering-card').forEach(card => {
+        card.addEventListener('click', function() {
+            const serviceType = this.getAttribute('data-service');
+            openModal(serviceType);
+        });
+    });
+
+    // Close modal when clicking the close button
+    modalClose.addEventListener('click', closeModal);
+
+    // Close modal when clicking outside the modal content
+    modalOverlay.addEventListener('click', function(e) {
+        if (e.target === modalOverlay) {
+            closeModal();
+        }
+    });
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modalOverlay.style.display === 'flex') {
+            closeModal();
+        }
+    });
+
+    function openModal(serviceType) {
+        const template = modalTemplates.querySelector(`[data-modal="${serviceType}"]`);
+        if (template) {
+            modalBody.innerHTML = template.innerHTML;
+            modalOverlay.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+    }
+
+    function closeModal() {
+        modalOverlay.style.display = 'none';
+        modalBody.innerHTML = '';
+        document.body.style.overflow = ''; // Restore scrolling
+    }
 }
