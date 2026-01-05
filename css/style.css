@@ -4,10 +4,10 @@
 :root {
   --primary-bg: #050505;
   --text-color: #ffffff;
-  --accent-purple: #9d4edd;
-  --accent-glow: #e0aaff;
+  --accent-purple: #4361ee;
+  --accent-glow: #4cc9f0;
   --gold: #ffffff; /* Keeping text white/gold */
-  --silver: #e0aaff;
+  --silver: #4cc9f0;
   --serif-font: 'League Spartan', sans-serif;
   --sans-font: 'Geist Sans', sans-serif;
 }
@@ -202,14 +202,14 @@ nav ul li a.active {
     position: absolute;
     width: 300px;
     height: 100vh;
-    background: radial-gradient(circle at 50% 50%, rgba(157, 78, 221, 0.15), transparent 70%);
+    background: radial-gradient(circle at 50% 50%, rgba(67, 97, 238, 0.15), transparent 70%);
     filter: blur(80px);
     opacity: 0.6;
     animation: rayFloat 10s ease-in-out infinite alternate;
 }
 
 .ray:nth-child(1) { top: -20%; left: -10%; animation-delay: 0s; }
-.ray:nth-child(2) { bottom: -20%; right: -10%; animation-delay: 2s; background: radial-gradient(circle at 50% 50%, rgba(224, 170, 255, 0.1), transparent 70%); }
+.ray:nth-child(2) { bottom: -20%; right: -10%; animation-delay: 2s; background: radial-gradient(circle at 50% 50%, rgba(76, 201, 240, 0.1), transparent 70%); }
 
 @keyframes rayFloat {
     0% { transform: translate(0, 0); }
