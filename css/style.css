@@ -1318,3 +1318,26 @@ footer .container {
     font-size: 2rem;
   }
 }
+
+/* Team Member Initials */
+.member-initials {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, var(--accent-purple), var(--accent-glow));
+  color: #000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 0 auto 20px auto;
+  font-family: var(--serif-font);
+  box-shadow: 0 0 20px rgba(76, 201, 240, 0.3);
+}
+
+.team-member:hover .member-initials {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+  box-shadow: 0 0 30px rgba(67, 97, 238, 0.6);
+}
