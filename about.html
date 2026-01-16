@@ -9,6 +9,11 @@
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="global-rays">
+        <div class="ray"></div>
+        <div class="ray"></div>
+        <div class="ray"></div>
+    </div>
     <div class="aether-bg" id="aether-bg"></div>
     <div id="fluid-bg"></div>
 
@@ -65,18 +70,22 @@
             <h2>Meet the Experts</h2>
             <div class="team-members">
                 <div class="team-member">
+                    <div class="member-initials">AC</div>
                     <h3>Alexandra Chen</h3>
                     <p>Chief Innovation Strategist</p>
                 </div>
                 <div class="team-member">
+                    <div class="member-initials">MR</div>
                     <h3>Marcus Rodriguez</h3>
                     <p>Director of Performance Marketing</p>
                 </div>
                 <div class="team-member">
+                    <div class="member-initials">SP</div>
                     <h3>Sophia Patel</h3>
                     <p>Lead Creative Director</p>
                 </div>
                 <div class="team-member">
+                    <div class="member-initials">DK</div>
                     <h3>David Kim</h3>
                     <p>Senior Analytics Engineer</p>
                 </div>
@@ -116,7 +125,7 @@
             .footer-hero {
                 position: relative;
                 width: 100%;
-                height: 300px;
+                height: 400px;
                 background: #06010F;
                 overflow: hidden;
                 display: flex;
@@ -132,13 +141,13 @@
                 width: 100%;
                 height: 100%;
                 pointer-events: none;
-                filter: blur(100px);
+                filter: blur(80px);
             }
 
             .light-ray {
                 position: absolute;
-                width: 250px;
-                height: 500px;
+                width: 300px;
+                height: 600px;
                 border-radius: 50%;
                 animation: godRays 8s ease-in-out infinite alternate;
             }
@@ -146,20 +155,20 @@
             .light-ray:nth-child(1) {
                 top: -50%;
                 left: 10%;
-                background: radial-gradient(circle, rgba(0, 255, 255, 0.6) 0%, rgba(0, 255, 255, 0.4) 50%, transparent 70%);
+                background: radial-gradient(circle, rgba(67, 97, 238, 0.4) 0%, rgba(67, 97, 238, 0.2) 50%, transparent 70%);
             }
 
             .light-ray:nth-child(2) {
                 top: -50%;
                 left: 40%;
-                background: radial-gradient(circle, rgba(0, 255, 255, 0.6) 0%, rgba(0, 255, 255, 0.4) 50%, transparent 70%);
+                background: radial-gradient(circle, rgba(76, 201, 240, 0.4) 0%, rgba(76, 201, 240, 0.2) 50%, transparent 70%);
                 animation-delay: 2s;
             }
 
             .light-ray:nth-child(3) {
                 top: -50%;
                 left: 70%;
-                background: radial-gradient(circle, rgba(0, 255, 255, 0.6) 0%, rgba(0, 255, 255, 0.4) 50%, transparent 70%);
+                background: radial-gradient(circle, rgba(67, 97, 238, 0.4) 0%, rgba(67, 97, 238, 0.2) 50%, transparent 70%);
                 animation-delay: 4s;
             }
 
@@ -188,27 +197,29 @@
             }
 
             .footer-content p:first-child {
-                font-size: 18px;
-                margin-bottom: 10px;
-                color: #cccccc;
+                font-size: 2rem;
+                margin-bottom: 20px;
+                color: #ffffff;
+                font-weight: 700;
+                font-family: var(--serif-font);
             }
 
             .footer-content .footer-logo {
                 max-width: 200px;
                 height: auto;
-                margin-bottom: 20px;
+                margin-bottom: 30px;
             }
 
             .social-icons {
                 display: flex;
                 justify-content: center;
                 gap: 20px;
-                margin-bottom: 20px;
+                margin-bottom: 30px;
             }
 
             .social-icons a {
-                width: 40px;
-                height: 40px;
+                width: 50px;
+                height: 50px;
                 background: rgba(255, 255, 255, 0.1);
                 display: flex;
                 align-items: center;
@@ -216,15 +227,17 @@
                 border-radius: 50%;
                 transition: background 0.3s;
                 text-decoration: none;
+                border: 1px solid rgba(255, 255, 255, 0.2);
             }
 
             .social-icons a:hover {
-                background: rgba(255, 255, 255, 0.2);
+                background: var(--accent-purple);
+                border-color: var(--accent-purple);
             }
 
             .social-icons svg {
-                width: 20px;
-                height: 20px;
+                width: 24px;
+                height: 24px;
                 fill: white;
             }
 
@@ -239,7 +252,7 @@
             <div class="light-ray"></div>
         </div>
         <div class="footer-content">
-            <p>Get in Touch</p>
+            <p>Ready to Elevate Your Brand?</p>
             <img src="images/logo.png" alt="Occult" class="footer-logo">
             <div class="social-icons">
                 <a href="https://www.linkedin.com/company/theoccult" target="_blank" rel="noopener noreferrer">

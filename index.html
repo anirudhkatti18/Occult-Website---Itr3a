@@ -10,6 +10,10 @@
 </head>
 <body>
     <div class="aether-bg" id="aether-bg"></div>
+    <div class="global-rays">
+        <div class="ray"></div>
+        <div class="ray"></div>
+    </div>
     <div id="fluid-bg"></div>
 
     <header>
@@ -36,44 +40,65 @@
         <div class="container">
             <div class="hero-content reveal">
             <h1 id="headline">
-                <span>Elevate Your Brand</span>
-                <span class="with-text">with</span>
-                <span>Elite Digital Strategy & Creative Execution</span>
+                <span>Marketing Agency</span>
+                <span class="with-text">built for</span>
+                <span>Visionaries</span>
             </h1>
-                <p>We transform market potential into measurable dominance through strategic innovation.</p>
-                <a href="contact.html" class="cta-link">Schedule Discovery Call</a>
+                <p>Strategy-first, AI-powered marketing agency & venture studio.</p>
+                <div style="margin-top: 40px;">
+                    <a href="contact.html" class="btn">Start Your Project</a>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="ai-advantage" class="reveal">
         <div class="container">
-            <h2>Core Offerings</h2>
-            <div class="ai-features">
-                <div class="feature">
-                    <h3>Future-Proof Strategy</h3>
-                    <p>Build adaptable frameworks that evolve with market dynamics for long-term success.</p>
+            <h2>Our Expertise</h2>
+            <div class="services-list">
+                 <div class="service-item">
+                    <div class="service-header">
+                        <h3>Strategy</h3>
+                        <span class="arrow">→</span>
+                    </div>
+                    <div class="service-desc">
+                        <h4>Market Moves That Matter</h4>
+                        <p>We turn insight into action with brand strategy, business consulting, and GTM planning.</p>
+                    </div>
                 </div>
-                <div class="feature">
-                    <h3>Optimized Campaigns</h3>
-                    <p>Drive targeted growth through data-driven campaigns that maximize ROI instantly.</p>
+                <div class="service-item">
+                    <div class="service-header">
+                        <h3>Design</h3>
+                        <span class="arrow">→</span>
+                    </div>
+                    <div class="service-desc">
+                        <h4>Brands People Remember</h4>
+                        <p>From branding to UI/UX, we create design systems that capture attention.</p>
+                    </div>
                 </div>
-                <div class="feature">
-                    <h3>Visionary Branding</h3>
-                    <p>Craft compelling identities that resonate deeply and differentiate your brand uniquely.</p>
+                <div class="service-item">
+                    <div class="service-header">
+                        <h3>Marketing</h3>
+                        <span class="arrow">→</span>
+                    </div>
+                    <div class="service-desc">
+                        <h4>Influence That Delivers</h4>
+                        <p>Campaigns and performance marketing that turn awareness into action.</p>
+                    </div>
                 </div>
-                <div class="feature">
-                    <h3>Premium Content</h3>
-                    <p>Produce engaging narratives that captivate audiences and amplify your message powerfully.</p>
+                <div class="service-item">
+                    <div class="service-header">
+                        <h3>Tech</h3>
+                        <span class="arrow">→</span>
+                    </div>
+                    <div class="service-desc">
+                        <h4>Built for the Future</h4>
+                        <p>Product development and AI integrations engineered to keep you ahead.</p>
+                    </div>
                 </div>
-                <div class="feature">
-                    <h3>Scalable Platforms</h3>
-                    <p>Develop robust digital ecosystems that grow seamlessly with your business demands.</p>
-                </div>
-                <div class="feature">
-                    <h3>Data Intelligence</h3>
-                    <p>Uncover actionable insights through advanced analytics to fuel strategic decisions.</p>
-                </div>
+            </div>
+             <div style="text-align: center; margin-top: 50px;">
+                <a href="services.html" class="cta-link">View All Services</a>
             </div>
         </div>
     </section>
@@ -89,7 +114,7 @@
             .footer-hero {
                 position: relative;
                 width: 100%;
-                height: 300px;
+                height: 400px;
                 background: #06010F;
                 overflow: hidden;
                 display: flex;
@@ -105,13 +130,13 @@
                 width: 100%;
                 height: 100%;
                 pointer-events: none;
-                filter: blur(100px);
+                filter: blur(80px);
             }
 
             .light-ray {
                 position: absolute;
-                width: 250px;
-                height: 500px;
+                width: 300px;
+                height: 600px;
                 border-radius: 50%;
                 animation: godRays 8s ease-in-out infinite alternate;
             }
@@ -119,20 +144,20 @@
             .light-ray:nth-child(1) {
                 top: -50%;
                 left: 10%;
-                background: radial-gradient(circle, rgba(0, 255, 255, 0.6) 0%, rgba(0, 255, 255, 0.4) 50%, transparent 70%);
+                background: radial-gradient(circle, rgba(67, 97, 238, 0.4) 0%, rgba(67, 97, 238, 0.2) 50%, transparent 70%);
             }
 
             .light-ray:nth-child(2) {
                 top: -50%;
                 left: 40%;
-                background: radial-gradient(circle, rgba(0, 255, 255, 0.6) 0%, rgba(0, 255, 255, 0.4) 50%, transparent 70%);
+                background: radial-gradient(circle, rgba(76, 201, 240, 0.4) 0%, rgba(76, 201, 240, 0.2) 50%, transparent 70%);
                 animation-delay: 2s;
             }
 
             .light-ray:nth-child(3) {
                 top: -50%;
                 left: 70%;
-                background: radial-gradient(circle, rgba(0, 255, 255, 0.6) 0%, rgba(0, 255, 255, 0.4) 50%, transparent 70%);
+                background: radial-gradient(circle, rgba(67, 97, 238, 0.4) 0%, rgba(67, 97, 238, 0.2) 50%, transparent 70%);
                 animation-delay: 4s;
             }
 
@@ -161,27 +186,29 @@
             }
 
             .footer-content p:first-child {
-                font-size: 18px;
-                margin-bottom: 10px;
-                color: #cccccc;
+                font-size: 2rem;
+                margin-bottom: 20px;
+                color: #ffffff;
+                font-weight: 700;
+                font-family: var(--serif-font);
             }
 
             .footer-content .footer-logo {
                 max-width: 200px;
                 height: auto;
-                margin-bottom: 20px;
+                margin-bottom: 30px;
             }
 
             .social-icons {
                 display: flex;
                 justify-content: center;
                 gap: 20px;
-                margin-bottom: 20px;
+                margin-bottom: 30px;
             }
 
             .social-icons a {
-                width: 40px;
-                height: 40px;
+                width: 50px;
+                height: 50px;
                 background: rgba(255, 255, 255, 0.1);
                 display: flex;
                 align-items: center;
@@ -189,15 +216,17 @@
                 border-radius: 50%;
                 transition: background 0.3s;
                 text-decoration: none;
+                border: 1px solid rgba(255, 255, 255, 0.2);
             }
 
             .social-icons a:hover {
-                background: rgba(255, 255, 255, 0.2);
+                background: var(--accent-purple);
+                border-color: var(--accent-purple);
             }
 
             .social-icons svg {
-                width: 20px;
-                height: 20px;
+                width: 24px;
+                height: 24px;
                 fill: white;
             }
 
@@ -212,7 +241,7 @@
             <div class="light-ray"></div>
         </div>
         <div class="footer-content">
-            <p>Get in Touch</p>
+            <p>Ready to Elevate Your Brand?</p>
             <img src="images/logo.png" alt="Occult" class="footer-logo">
             <div class="social-icons">
                 <a href="https://www.linkedin.com/company/theoccult" target="_blank" rel="noopener noreferrer">

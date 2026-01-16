@@ -2,11 +2,13 @@
 
 /* CSS Variables for Theme */
 :root {
-  --primary-bg: #0a0a0a;
-  --text-color: #FFF9F3;
-  --gold: #FFF9F3;
-  --silver: #FFF9F3;
-  --serif-font: 'Geist Sans', sans-serif;
+  --primary-bg: #050505;
+  --text-color: #ffffff;
+  --accent-purple: #4361ee;
+  --accent-glow: #4cc9f0;
+  --gold: #ffffff; /* Keeping text white/gold */
+  --silver: #4cc9f0;
+  --serif-font: 'League Spartan', sans-serif;
   --sans-font: 'Geist Sans', sans-serif;
 }
 
@@ -30,27 +32,35 @@ body {
   padding: 0 20px;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4, h5, h6 {
   font-family: var(--serif-font);
   margin-bottom: 20px;
-  color: var(--gold);
+  color: var(--text-color);
   text-align: center;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -1px;
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 5rem;
+  line-height: 1.1;
+  letter-spacing: -2px;
 }
 
 h2 {
-  font-size: 2.5rem;
+  font-size: 3.5rem;
+  letter-spacing: -1.5px;
 }
 
 h3 {
-  font-size: 2rem;
+  font-size: 2.5rem;
 }
 
 p {
   margin-bottom: 20px;
+  font-size: 1.1rem;
+  color: #cccccc;
 }
 
 /* Navigation */
@@ -162,8 +172,6 @@ nav ul li a.active {
   background: var(--primary-bg);
 }
 
-
-
 .aether-bg::after {
   content: '';
   position: absolute;
@@ -172,10 +180,40 @@ nav ul li a.active {
   width: 100%;
   height: 100%;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-  background-size: 50px 50px, 50px 50px;
-  opacity: 0.6;
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.5;
+}
+
+/* Global Light Rays */
+.global-rays {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.ray {
+    position: absolute;
+    width: 300px;
+    height: 100vh;
+    background: radial-gradient(circle at 50% 50%, rgba(67, 97, 238, 0.15), transparent 70%);
+    filter: blur(80px);
+    opacity: 0.6;
+    animation: rayFloat 10s ease-in-out infinite alternate;
+}
+
+.ray:nth-child(1) { top: -20%; left: -10%; animation-delay: 0s; }
+.ray:nth-child(2) { bottom: -20%; right: -10%; animation-delay: 2s; background: radial-gradient(circle at 50% 50%, rgba(76, 201, 240, 0.1), transparent 70%); }
+
+@keyframes rayFloat {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(30px, 30px); }
 }
 
 /* Scroll Reveal Animation */
@@ -193,21 +231,23 @@ nav ul li a.active {
 /* Button Styles */
 .btn {
   display: inline-block;
-  background: linear-gradient(45deg, var(--gold), var(--silver));
-  color: var(--primary-bg);
-  padding: 15px 30px;
+  background: #ffffff;
+  color: #000000;
+  padding: 18px 40px;
   text-decoration: none;
-  border-radius: 5px;
-  font-weight: 600;
+  border-radius: 50px;
+  font-weight: 700;
   transition: all 0.3s ease;
-  border: 2px solid transparent;
+  border: 1px solid #ffffff;
+  text-transform: uppercase;
+  font-family: var(--serif-font);
+  letter-spacing: 1px;
 }
 
 .btn:hover {
   background: transparent;
-  color: var(--gold);
-  border-color: var(--gold);
-  box-shadow: 0 0 20px var(--gold);
+  color: #ffffff;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
 }
 
 /* Section Spacing */
@@ -305,15 +345,16 @@ section {
 #headline {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  min-height: 180px;
-  font-size: 2.4rem;
-  background: linear-gradient(45deg, #FFF9F3, #FFF9F3, #FFF9F3);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 50px;
+  min-height: auto;
+  font-size: 5rem;
+  color: #ffffff;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: -2px;
+  line-height: 1;
 }
 
 #headline span {
@@ -323,6 +364,11 @@ section {
 
 .with-text {
   font-size: 1.5rem;
+  font-weight: 400;
+  font-style: italic;
+  font-family: var(--sans-font);
+  margin: 10px 0;
+  color: var(--accent-purple);
 }
 
 @keyframes waver {
@@ -1175,4 +1221,123 @@ footer .container {
   .nexus-form-content textarea {
     font-size: 0.9rem;
   }
+}
+
+/* Services List Styles */
+.services-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 60px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.service-item {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 40px 0;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-item:last-child {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.service-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.service-item h3 {
+  font-size: 3rem;
+  margin: 0;
+  text-align: left;
+  transition: transform 0.4s ease, color 0.4s ease;
+  color: var(--text-color);
+}
+
+.service-item .arrow {
+  font-size: 2rem;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 0.4s ease;
+  color: var(--accent-purple);
+}
+
+.service-desc {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.service-desc h4 {
+  font-size: 1.5rem;
+  margin: 20px 0 10px 0;
+  color: var(--accent-purple);
+  text-align: left;
+}
+
+.service-desc p {
+  text-align: left;
+  max-width: 600px;
+  font-size: 1rem;
+}
+
+/* Hover State */
+.service-item:hover .service-header h3 {
+  transform: translateX(10px);
+  color: var(--accent-purple);
+}
+
+.service-item:hover .arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.service-item:hover .service-desc {
+  max-height: 200px; /* Adjust as needed */
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.5s ease;
+}
+
+.service-item:hover {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.02));
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .service-item h3 {
+    font-size: 2rem;
+  }
+}
+
+/* Team Member Initials */
+.member-initials {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, var(--accent-purple), var(--accent-glow));
+  color: #000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 0 auto 20px auto;
+  font-family: var(--serif-font);
+  box-shadow: 0 0 20px rgba(76, 201, 240, 0.3);
+}
+
+.team-member:hover .member-initials {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+  box-shadow: 0 0 30px rgba(67, 97, 238, 0.6);
 }
